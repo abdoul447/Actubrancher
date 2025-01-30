@@ -3,31 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actu Brancher</title>
-    <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3403822119037155"
-     crossorigin="anonymous"></script>
+    <title>Modern Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links a {
+            color: #333;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #007bff;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('https://source.unsplash.com/random/1200x800') center/cover;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .post-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .post-image {
+            height: 200px;
+            background: #ddd;
+            overflow: hidden;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-content {
+            padding: 1.5rem;
+        }
+
+        .post-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .post-category {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .post-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .post-excerpt {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .sidebar {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .blog-posts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <img src="images/logo.png" alt="Logo Actu Brancher" class="logo">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="blogs/blog1.html">Articles</a></li>
-                    <li><a href="about.html">À propos</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <nav class="container">
+            <div class="logo">BlogHub</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Categories</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </div>
+        </nav>
     </header>
-    <main>
-        <h1>Bienvenue sur Actu Brancher</h1>
-        <p>Découvrez les dernières actualités et tendances du moment.</p>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Welcome to BlogHub</h1>
+            <p>Discover amazing content about technology, travel, and lifestyle</p>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="blog-posts">
+            <!-- Blog Post 1 -->
+            <article class="post-card">
+                <div class="post-image">
+                    <img src="https://source.unsplash.com/random/600x400?tech" alt="Tech">
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span class="post-category">Technology</span>
+                        <span>March 15, 2023</span>
+                    </div>
+                    <h2 class="post-title">The Future of Artificial Intelligence</h2>
+                    <p class="post-excerpt">Explore how AI is transforming industries and creating new opportunities in the modern workplace.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+
+            <!-- Blog Post 2 -->
+            <article class="post-card">
+                <div class="post-image">
+                    <img src="https://source.unsplash.com/random/600x400?travel" alt="Travel">
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span class="post-category">Travel</span>
+                        <span>March 14, 2023</span>
+                    </div>
+                    <h2 class="post-title">Top 10 Hidden Gems in Europe</h2>
+                    <p class="post-excerpt">Discover off-the-beaten-path destinations that will make your European adventure unforgettable.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+
+            <!-- Blog Post 3 -->
+            <article class="post-card">
+                <div class="post-image">
+                    <img src="https://source.unsplash.com/random/600x400?food" alt="Food">
+                </div>
+                <div class="post-content">
+                    <div class="post-meta">
+                        <span class="post-category">Lifestyle</span>
+                        <span>March 13, 2023</span>
+                    </div>
+                    <h2 class="post-title">Healthy Eating Habits for Busy People</h2>
+                    <p class="post-excerpt">Learn how to maintain a balanced diet even with the busiest of schedules.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </div>
+            </article>
+        </div>
     </main>
+
     <footer>
-        <p>© 2025 Actu Brancher - Tous droits réservés.</p>
+        <div class="container">
+            <p>&copy; 2023 BlogHub. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+            </div>
+        </div>
     </footer>
 </body>
-</html>
+    </html>
