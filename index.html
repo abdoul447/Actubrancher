@@ -3,71 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Blog</title>
+    <title>Modern Blog Design</title>
     <style>
+        :root {
+            --primary: #2A2A2A;
+            --accent: #FF6B6B;
+            --light: #F4F4F4;
+            --transition: all 0.3s ease;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
         }
 
         body {
-            "background-image"
-            <img src="https://images.unsplash.com/photo-1416339306562-f3d12fefd36f" alt="Tech">
-                
+            background-color: var(--light);
             line-height: 1.6;
-             
+            color: var(--primary);
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 1.5rem;
         }
 
-        header {
-            background-color: #ffffff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        /* Header */
+        .main-header {
+            background: var(--primary);
+            padding: 2rem 0;
+            margin-bottom: 3rem;
         }
 
-        nav {
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #333;
+        .brand {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
         }
 
-        .nav-links a {
-            color: #333;
+        .main-nav a {
+            color: white;
             text-decoration: none;
             margin-left: 2rem;
-            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
         }
 
-        .nav-links a:hover {
-            color: #007bff;
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
         }
 
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                        url('https://source.unsplash.com/random/1200x800') center/cover;
+        .main-nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Featured Post */
+        .featured-post {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .featured-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .post-tag {
+            display: inline-block;
+            background: var(--accent);
             color: white;
-            padding: 6rem 0;
-            text-align: center;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .post-excerpt {
+            font-size: 1.1rem;
+            color: #666;
             margin-bottom: 2rem;
         }
 
-        .blog-posts {
+        /* Post Grid */
+        .post-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
@@ -76,174 +132,184 @@
 
         .post-card {
             background: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
         }
 
         .post-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
-        .post-image {
+        .card-image {
             height: 200px;
-            background: #ddd;
             overflow: hidden;
         }
 
-        .post-image img {
+        .card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition);
         }
 
-        .post-content {
+        .post-card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
             padding: 1.5rem;
         }
 
-        .post-meta {
+        .card-meta {
             display: flex;
             justify-content: space-between;
             font-size: 0.9rem;
-            color: #666;
+            color: #888;
             margin-bottom: 1rem;
         }
 
-        .post-category {
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        .post-title {
+        .card-title {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: #333;
         }
 
-        .post-excerpt {
+        .card-excerpt {
             color: #666;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .read-more {
-            display: inline-block;
-            color: #007bff;
+            display: inline-flex;
+            align-items: center;
+            color: var(--accent);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 500;
         }
 
-        .read-more:hover {
-            text-decoration: underline;
+        .read-more svg {
+            margin-left: 0.5rem;
+            transition: transform 0.3s ease;
         }
 
-        .sidebar {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            padding: 2rem 0;
-            margin-top: 3rem;
-            text-align: center;
+        .read-more:hover svg {
+            transform: translateX(3px);
         }
 
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .blog-posts {
+            .featured-post {
                 grid-template-columns: 1fr;
+            }
+
+            .post-title {
+                font-size: 2rem;
+            }
+
+            .main-nav {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">BlogHub</div>
-            <div class="nav-links">
-                <a href="#">Actualités</a>
-                <a href="#">Blog</a>
+    <header class="main-header">
+        <nav class="nav-container container">
+            <a href="#" class="brand">BlogSphere</a>
+            <nav class="main-nav">
+                <a href="#">Home</a>
+                <a href="#">Articles</a>
+                <a href="#">Categories</a>
                 <a href="#">About</a>
-                <a href="#">Contact</a>
-            </div>
+            </nav>
         </nav>
     </header>
 
-    <div class="hero">
-        <div class="container">
-            <h1>Welcome to BlogHub</h1>
-            <p>Découvrez des articles captivants et les dernières tendances mondial</p>
-        </div>
-    </div>
-
     <main class="container">
-        <div class="blog-posts">
-            <!-- Blog Post 1 -->
+        <!-- Featured Post -->
+        <article class="featured-post">
+            <div class="featured-image">
+                <img src="https://source.unsplash.com/random/800x600?tech" alt="Featured Post">
+            </div>
+            <div class="featured-content">
+                <span class="post-tag">Technology</span>
+                <h1 class="post-title">The Future of Web Development in 2024</h1>
+                <p class="post-excerpt">Discover the latest trends and innovations shaping the future of web development and digital experiences.</p>
+                <a href="#" class="read-more">
+                    Read Article
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+            </div>
+        </article>
+
+        <!-- Post Grid -->
+        <div class="post-grid">
+            <!-- Post 1 -->
             <article class="post-card">
-                <div class="post-image">
-                    <img src="https://images.unsplash.com/photo-1416339306562-f3d12fefd36f" alt="Tech">
+                <div class="card-image">
+                    <img src="https://source.unsplash.com/random/600x400?design" alt="Design">
                 </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        <span class="post-category">Technology</span>
-                        <span>March 15, 2023</span>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span>Design</span>
+                        <span>Mar 15, 2024</span>
                     </div>
-                    <h2 class="post-title">The Future of Artificial Intelligence</h2>
-                    <p class="post-excerpt">Explore how AI is transforming industries and creating new opportunities in the modern workplace.</p>
-                    <a href="#" class="read-more">Lire la suite...</a>
+                    <h2 class="card-title">Modern UI Design Principles</h2>
+                    <p class="card-excerpt">Explore the essential principles that every designer should know in 2024.</p>
+                    <a href="#" class="read-more">
+                        Read More
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </article>
 
-            <!-- Blog Post 2 -->
+            <!-- Post 2 -->
             <article class="post-card">
-                <div class="post-image">
+                <div class="card-image">
                     <img src="https://source.unsplash.com/random/600x400?travel" alt="Travel">
                 </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        <span class="post-category">Travel</span>
-                        <span>March 14, 2023</span>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span>Travel</span>
+                        <span>Mar 14, 2024</span>
                     </div>
-                    <h2 class="post-title">Top 10 Hidden Gems in Europe</h2>
-                    <p class="post-excerpt">Discover off-the-beaten-path destinations that will make your European adventure unforgettable.</p>
-                    <a href="#" class="read-more">Lire la suite...</a>
+                    <h2 class="card-title">Hidden Gems of Southeast Asia</h2>
+                    <p class="card-excerpt">Discover off-the-beaten-path destinations for your next adventure.</p>
+                    <a href="#" class="read-more">
+                        Read More
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </article>
 
-            <!-- Blog Post 3 -->
+            <!-- Post 3 -->
             <article class="post-card">
-                <div class="post-image">
-                    <img src="https://source.unsplash.com/random/600x400?food" alt="Food">
+                <div class="card-image">
+                    <img src="https://source.unsplash.com/random/600x400?health" alt="Health">
                 </div>
-                <div class="post-content">
-                    <div class="post-meta">
-                        <span class="post-category">Lifestyle</span>
-                        <span>March 13, 2023</span>
+                <div class="card-content">
+                    <div class="card-meta">
+                        <span>Health</span>
+                        <span>Mar 13, 2024</span>
                     </div>
-                    <h2 class="post-title">Healthy Eating Habits for Busy People</h2>
-                    <p class="post-excerpt">Learn how to maintain a balanced diet even with the busiest of schedules.</p>
-                    <a href="#" class="read-more">Lire la suite...</a>
+                    <h2 class="card-title">Mindfulness & Modern Life</h2>
+                    <p class="card-excerpt">Find balance in a fast-paced world through mindfulness practices.</p>
+                    <a href="#" class="read-more">
+                        Read More
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </a>
                 </div>
             </article>
         </div>
     </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 BlogHub. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#">Twitter</a>
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-            </div>
-        </div>
-    </footer>
 </body>
-    </html>
+</html>
